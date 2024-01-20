@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Chat | Login</title>
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1" />
+	<meta name="description"
+		  content="" />
+	<link rel="icon"
+		  href="favicon.png">
+	<link rel="stylesheet"
+		  href="static/css/hx-replace.css">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+
+<body>
+	<div class="flex flex-col min-h-screen bg-neutral-100 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-100">
+		<header class="flex items-center justify-center py-4 mt-10">
+			<a class="flex items-center gap-2"
+			   href="#"
+			   rel="ugc">
+				<svg xmlns="http://www.w3.org/2000/svg"
+					 width="24"
+					 height="24"
+					 viewBox="0 0 24 24"
+					 fill="none"
+					 stroke="currentColor"
+					 stroke-width="2"
+					 stroke-linecap="round"
+					 stroke-linejoin="round"
+					 class="h-6 w-6 ">
+					<path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+				</svg>
+				<span class="text-lg font-semibold">Avex.</span>
+			</a>
+		</header>
+		<main class="flex flex-col items-center justify-center p-4 space-y-4">
+			<div class="space-y-4">
+				<h1 class="text-3xl font-bold text-center">Login</h1>
+				<p class="text-gray-500 dark:text-gray-400">Enter your username and password to login to your account
+				</p>
+			</div>
+
+			<form hx-post="api/login"
+				  hx-indicator="#submit-spinner"
+				  hx-target="#errors"
+				  class="space-y-4 w-1/5">
+				<p id="errors"
+				   class="text-red-600 dark:text-red-400 text-sm"></p>
+				<div class="space-y-2">
+					<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+						   for="username">
+						Username
+					</label>
+					<input class="dark:text-neutral-950 text-neutral-100  dark:bg-neutral-50 bg-neutral-950 flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+						   name="email"
+						   placeholder="foo@bar.com"
+						   required="" />
+				</div>
+				<div class="space-y-2">
+					<label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+						   for="password">
+						Password
+					</label>
+					<input type="password"
+						   class="dark:text-neutral-950 text-neutral-100  dark:bg-neutral-50 bg-neutral-950 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+						   name="password"
+						   placeholder="********"
+						   required="" />
+				</div>
+				</br>
+				<div id="submit-spinner">
+					<button class="dark:text-neutral-950 text-neutral-800  dark:bg-neutral-300 bg-neutral-950 hover:bg-neutral-900 hover:dark:bg-neutral-400 ease-out duration-150 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full"
+							type="submit">
+						Login
+					</button>
+					<h1 class="indicator-replace dark:text-neutral-950 text-neutral-800  dark:bg-neutral-300 bg-neutral-950 hover:bg-neutral-900 hover:dark:bg-neutral-400 ease-out duration-150 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full"
+						type="submit">
+						{{ template "spinner" . }}
+					</h1>
+				</div>
+			</form>
+		</main>
+	</div>
+</body>
+</html>

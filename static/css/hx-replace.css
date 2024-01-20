@@ -1,0 +1,13 @@
+.indicator-replace {
+	display: none !important;
+}
+.htmx-request .indicator-replace{
+	display:inline !important;
+}
+.htmx-request.indicator-replace{
+	display:inline !important;
+}
+
+.htmx-request > button {
+	display: none !important;
+}
